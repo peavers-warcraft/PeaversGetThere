@@ -1,0 +1,13 @@
+name: Validate Issues
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  validate:
+    uses: peavers-code/peavers-warcraft-workflows/.github/workflows/validate-issues.yml@master
+    secrets: inherit

@@ -1,0 +1,40 @@
+## Interface: 120001, 120005, 120007
+
+## Title: |cff3abdf7Peavers|rGetThere
+## Notes: Search any location and get guided there
+## Author: Peavers
+## Version: 0.1.0
+
+## IconTexture: Interface\AddOns\PeaversGetThere\src\Media\Icon.tga
+## Category-enUS: Peavers
+
+## X-Website: https://peavers.io
+## X-Source-Code: https://github.com/peavers-warcraft/PeaversGetThere
+# X-Curse-Project-ID: assigned at first CurseForge release
+
+## Dependencies: PeaversGetThereData, PeaversCommons, PeaversConfig
+## SavedVariables: PeaversGetThereDB
+
+Libs\HereBeDragons\HereBeDragons-2.0.lua
+Libs\HereBeDragons\HereBeDragons-Pins-2.0.lua
+
+Changelog.lua
+
+src\Config\Config.lua
+src\Config\ConfigUI.lua
+
+src\Core\LocationIndex.lua
+src\Core\Search.lua
+src\Core\Capabilities.lua
+src\Core\TravelGraph.lua
+src\Core\Router.lua
+src\Core\Guidance.lua
+src\Core\TaxiAssist.lua
+
+src\UI\MapPins.lua
+src\UI\SearchFrame.lua
+src\UI\RoutePanel.lua
+src\UI\Arrow.lua
+src\UI\MinimapButton.lua
+
+src\Main.lua

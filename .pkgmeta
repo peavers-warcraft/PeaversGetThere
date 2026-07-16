@@ -1,0 +1,21 @@
+package-as: PeaversGetThere
+
+required-dependencies:
+  - peaverscommons
+  - peaversgettheredata
+  - peaversconfig
+
+ignore:
+  - .git
+  - .github
+  - .gitignore
+  - .editorconfig
+  - .pkgmeta
+  - README.md
+  - CHANGELOG.md
+  - TESTING.md
+  - PLAN.md
+  - LICENSE
+  - local_deploy.sh
+  - local_deploy.ps1
+  - tools

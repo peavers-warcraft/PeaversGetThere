@@ -1,0 +1,16 @@
+# .peavers.yml - Addon metadata for peavers.io website
+
+# Icon to display on website
+iconType: ArcaneRuneIcon
+
+# CurseForge project ID for download statistics (assigned at first release)
+curseForgeProjectId: 0
+
+# Tags for filtering and categorization
+tags:
+  - travel
+  - map
+  - utility
+
+# Gallery images shown on the website
+galleryImages: []

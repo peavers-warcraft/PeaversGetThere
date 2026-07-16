@@ -1,0 +1,23 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+  actions: write
+  id-token: write
+
+jobs:
+  release:
+    uses: peavers-code/peavers-warcraft-workflows/.github/workflows/release.yml@master
+    with:
+      toc_file: PeaversGetThere.toc
+      addon_name: PeaversGetThere
+      git_user_name: Chris Turner
+      git_user_email: peavers@gmail.com
+      use_self_hosted: true
+    secrets: inherit
