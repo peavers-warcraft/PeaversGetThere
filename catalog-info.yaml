@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: PeaversGetThere
+  description: "A World of Warcraft addon that lets you search any location and guides you there with map pins and directions."
+  annotations:
+    github.com/project-slug: peavers-warcraft/PeaversGetThere
+spec:
+  type: library
+  lifecycle: production
+  owner: peavers-warcraft

@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="PEAVERSGETTHERE_TOGGLESEARCH" header="PEAVERSGETTHERE" category="ADDONS">
+		PeaversGetThere_ToggleSearch()
+	</Binding>
+</Bindings>
