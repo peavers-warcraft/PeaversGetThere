@@ -284,6 +284,12 @@ function Router:FindRoute(targetEntry)
 			kind = step.edge.kind,
 			cost = step.edge.cost,
 			to = toDesc,
+			-- departure descriptor: guidance aims a transit leg at the conveyance
+			-- (the portal/tram), not its far-side arrival
+			from = fromNode and {
+				map = fromNode.map, x = fromNode.x, y = fromNode.y, name = fromNode.name,
+				wx = fromNode.wx, wy = fromNode.wy, instance = fromNode.instance,
+			} or nil,
 			action = step.edge.action,
 			fromName = fromNode and fromNode.name,
 		}

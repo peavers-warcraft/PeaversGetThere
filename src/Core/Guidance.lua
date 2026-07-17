@@ -51,8 +51,14 @@ end
 local function ApplyCurrentTarget()
 	if route then
 		local leg = route.legs[legIndex]
-		targetX, targetY, targetInstance = leg.to.wx, leg.to.wy, leg.to.instance
-		PGT.MapPins:SetTarget({ map = leg.to.map, x = leg.to.x, y = leg.to.y, name = leg.to.name })
+		-- On a transit leg you board the conveyance at its DEPARTURE point, not by
+		-- walking to the arrival - which can even share this world instance (the
+		-- Silvermoon<->Stormwind portal and the Deeprun Tram both stay in instance
+		-- 0). Aim the arrow/pin at the departure so guidance leads to the portal,
+		-- not across the map toward the far side.
+		local aim = (TRANSIT_KINDS[leg.kind] and leg.from) or leg.to
+		targetX, targetY, targetInstance = aim.wx, aim.wy, aim.instance
+		PGT.MapPins:SetTarget({ map = aim.map, x = aim.x, y = aim.y, name = leg.to.name })
 		nameText:SetText(("Step %d/%d - %s"):format(legIndex, #route.legs, leg.to.name or ""))
 	else
 		targetX, targetY, targetInstance = HBD:GetWorldCoordinatesFromZone(
@@ -114,17 +120,17 @@ local function Tick()
 		return
 	end
 	local px, py, instance = HBD:GetPlayerWorldPosition()
+	-- A transit leg is completed by boarding the conveyance and arriving on the
+	-- far map (handled in OnZoneChanged), never by walking to the arrival. Show
+	-- the instruction and stop, so we neither aim the arrow at nor auto-advance
+	-- toward an arrival that may share this world instance (the Silvermoon<->
+	-- Stormwind portal and the Deeprun Tram both sit in instance 0, which the old
+	-- instance-change gate silently missed).
+	if route and TRANSIT_KINDS[route.legs[legIndex].kind] then
+		SetLine(TRANSIT_LINES[route.legs[legIndex].kind] or "In transit")
+		return
+	end
 	if not px or not targetX or instance ~= targetInstance then
-		-- at a transit leg's departure point the instruction beats "paused"
-		if px and route then
-			local leg = route.legs[legIndex]
-			local prevInstance = legIndex > 1 and route.legs[legIndex - 1].to.instance
-				or route.startInstance
-			if TRANSIT_KINDS[leg.kind] and instance == prevInstance then
-				SetLine(TRANSIT_LINES[leg.kind] or "In transit")
-				return
-			end
-		end
 		SetLine(PAUSED_LINE)
 		return
 	end
