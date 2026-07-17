@@ -1,9 +1,18 @@
 package-as: PeaversGetThere
 
-required-dependencies:
-  - peaverscommons
-  - peaversgettheredata
-  - peaversconfig
+# TEMPORARILY UNLINKED. CurseForge takes ~2 days to approve a first release, and
+# a relation pointing at a project with no approved file yet gets rejected —
+# which would block this addon's own first upload. Restore once PeaversGetThere
+# and PeaversGetThereData are both live on CurseForge.
+#
+# Note: this only affects the CurseForge relations the upload action sends. The
+# in-game load-order requirement is the toc's `## Dependencies:` line, which is
+# untouched — the addon still requires these to run.
+#
+# required-dependencies:
+#   - peaverscommons
+#   - peaversgettheredata
+#   - peaversconfig
 
 ignore:
   - .git
