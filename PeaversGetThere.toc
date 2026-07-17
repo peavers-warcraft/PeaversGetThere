@@ -10,7 +10,7 @@
 
 ## X-Website: https://peavers.io
 ## X-Source-Code: https://github.com/peavers-warcraft/PeaversGetThere
-# X-Curse-Project-ID: assigned at first CurseForge release
+## X-Curse-Project-ID: 1613905
 
 ## Dependencies: PeaversGetThereData, PeaversCommons, PeaversConfig
 ## SavedVariables: PeaversGetThereDB
