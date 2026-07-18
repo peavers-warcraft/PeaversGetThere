@@ -89,9 +89,7 @@ PeaversCommons.Events:Init(addonName, function()
 			description = "Search any location and get guided there",
 			addonRef = PGT,
 			config = PGT.Config,
-			buildPanel = function(parentFrame)
-				return PGT.ConfigUI:BuildIntoFrame(parentFrame)
-			end,
+			pages = PGT.ConfigUI:GetPages(),
 			order = 10,
 		})
 	end

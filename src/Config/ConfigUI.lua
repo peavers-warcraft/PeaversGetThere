@@ -90,7 +90,15 @@ function ConfigUI:BuildGeneralPage(parentFrame)
 	arrowSlider:SetPoint("TOPLEFT", indent, y)
 	y = y - 52
 
-	_, newY = W:CreateSectionHeader(parentFrame, "Teleport Suggestions", indent, y)
+	parentFrame:SetHeight(math.abs(y) + 30)
+end
+
+function ConfigUI:BuildSuggestionsPage(parentFrame)
+	local y = -10
+	local indent = 25
+	local width = ResolveWidth(parentFrame, indent)
+
+	local _, newY = W:CreateSectionHeader(parentFrame, "Teleport Suggestions", indent, y)
 	y = newY - 8
 
 	local suggestionsCheckbox = W:CreateCheckbox(parentFrame, "Suggest your fastest teleports toward the target", {
@@ -121,6 +129,15 @@ function ConfigUI:BuildGeneralPage(parentFrame)
 	parentFrame:SetHeight(math.abs(y) + 30)
 end
 
+function ConfigUI:GetPages()
+	return {
+		-- First entry renders leftmost and is the default-selected tab
+		{ key = "general", label = "General", builder = function(f) ConfigUI:BuildGeneralPage(f) end },
+		{ key = "suggestions", label = "Suggestions", builder = function(f) ConfigUI:BuildSuggestionsPage(f) end },
+	}
+end
+
+-- Legacy single-panel path, kept for the older ConfigRegistry `buildPanel` contract.
 function ConfigUI:BuildIntoFrame(parentFrame)
 	self:BuildGeneralPage(parentFrame)
 	return parentFrame
