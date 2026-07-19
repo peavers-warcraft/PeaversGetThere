@@ -57,15 +57,11 @@ end
 
 local function TeleportCooldown(t)
 	if t.type == "spell" then
-		if C_Spell and C_Spell.GetSpellCooldown then
-			local info = C_Spell.GetSpellCooldown(t.id)
-			if info then
-				return info.startTime or 0, info.duration or 0
-			end
-			return 0, 0
+		local info = C_Spell.GetSpellCooldown(t.id)
+		if info then
+			return info.startTime or 0, info.duration or 0
 		end
-		local start, duration = GetSpellCooldown(t.id)
-		return start or 0, duration or 0
+		return 0, 0
 	end
 	if C_Item and C_Item.GetItemCooldown then
 		local start, duration = C_Item.GetItemCooldown(t.id)

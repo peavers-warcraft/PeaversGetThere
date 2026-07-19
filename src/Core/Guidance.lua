@@ -200,7 +200,7 @@ local function OnZoneChanged(_, newMap)
 	end
 	if route then
 		local leg = route.legs[legIndex]
-		local px, py, pinstance = HBD:GetPlayerWorldPosition()
+		local _, _, pinstance = HBD:GetPlayerWorldPosition()
 		local prevInstance = legIndex > 1 and route.legs[legIndex - 1].to.instance
 			or route.startInstance
 

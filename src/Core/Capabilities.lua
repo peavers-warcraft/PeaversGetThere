@@ -227,8 +227,6 @@ function Capabilities:GetCooldownRemaining(t)
 		if C_Spell and C_Spell.GetSpellCooldown then
 			local info = C_Spell.GetSpellCooldown(t.id)
 			start, duration = info and info.startTime or 0, info and info.duration or 0
-		elseif GetSpellCooldown then
-			start, duration = GetSpellCooldown(t.id)
 		end
 	elseif C_Item.GetItemCooldown then
 		start, duration = C_Item.GetItemCooldown(t.id)
