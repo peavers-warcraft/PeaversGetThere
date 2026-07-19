@@ -43,7 +43,7 @@ end
 
 local function AddNode(id, kind, map, x, y, name)
 	local wx, wy, instance = HBD:GetWorldCoordinatesFromZone(x, y, map)
-	if not wx then
+	if not wx or not instance then
 		return nil -- unprojectable maps can't participate in world routing
 	end
 	local node = {

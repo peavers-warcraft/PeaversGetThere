@@ -130,6 +130,7 @@ function Router:FindRoute(targetEntry)
 		if dest then
 			-- shared penalty model (Capabilities): random scales the base
 			-- cost only, the cooldown remainder is added afterwards
+			---@type number?
 			local cost = TELEPORT_COST
 			if t.random then
 				cost = cost * PGT.Capabilities.RANDOM_MULTIPLIER
