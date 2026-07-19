@@ -3,7 +3,7 @@
 ## Title: |cff3abdf7Peavers|rGetThere
 ## Notes: Search any location and get guided there
 ## Author: Peavers
-## Version: 0.1.7
+## Version: 0.1.8
 
 ## IconTexture: Interface\AddOns\PeaversGetThere\src\Media\Icon.tga
 ## Category-enUS: Peavers
