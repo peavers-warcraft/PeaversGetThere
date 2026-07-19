@@ -146,25 +146,28 @@ local function CreateRow(index)
 	row.bg:SetAllPoints()
 	row.bg:SetColorTexture(0, 0, 0, 0)
 
+	-- Two-column grid: name/tag on the top line, zone/dist on the bottom.
+	-- Tag and dist are right-aligned to the row; name and zone truncate
+	-- against them so nothing shifts or overflows per-row.
+	row.tag = row:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
+	row.tag:SetPoint("TOPRIGHT", -6, -5)
+
 	row.name = row:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 	row.name:SetPoint("TOPLEFT", 6, -4)
+	row.name:SetPoint("RIGHT", row.tag, "LEFT", -8, 0)
 	row.name:SetJustifyH("LEFT")
 	row.name:SetWordWrap(false)
 
-	row.tag = row:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
-	row.tag:SetPoint("LEFT", row.name, "RIGHT", 6, 0)
+	row.dist = row:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
+	row.dist:SetPoint("BOTTOMRIGHT", -6, 5)
+	row.dist:SetTextColor(0.82, 0.83, 0.85)
 
 	row.zone = row:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
 	row.zone:SetPoint("BOTTOMLEFT", 6, 4)
+	row.zone:SetPoint("RIGHT", row.dist, "LEFT", -8, 0)
 	row.zone:SetJustifyH("LEFT")
 	row.zone:SetWordWrap(false)
 	row.zone:SetTextColor(0.55, 0.56, 0.60)
-
-	row.dist = row:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
-	row.dist:SetPoint("RIGHT", -6, 0)
-	row.dist:SetTextColor(0.82, 0.83, 0.85)
-
-	row.name:SetPoint("RIGHT", row.dist, "LEFT", -60, 0)
 
 	row:SetScript("OnClick", function()
 		Select(index)
