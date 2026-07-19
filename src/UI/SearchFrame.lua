@@ -35,7 +35,7 @@ local function FormatDistance(entry)
 		return nil
 	end
 	local wx, wy, instance = HBD:GetWorldCoordinatesFromZone(entry.x, entry.y, entry.map)
-	if not wx or instance ~= playerInstance then
+	if not wx or not instance or instance ~= playerInstance then
 		return nil
 	end
 	local distance = HBD:GetWorldDistance(instance, px, py, wx, wy)
