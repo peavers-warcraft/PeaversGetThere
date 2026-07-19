@@ -129,9 +129,40 @@ function ConfigUI:BuildSuggestionsPage(parentFrame)
 	parentFrame:SetHeight(math.abs(y) + 30)
 end
 
+function ConfigUI:BuildInfoPage(parentFrame)
+	PeaversCommons.ConfigUIUtils.BuildInfoPage(parentFrame, "Get There", {
+		"Search any place in the game - zones, cities, dungeons, flight points, " ..
+			"portal hubs, even city services like the auction house - and get " ..
+			"guided there with multi-leg routes, map pins, and a direction arrow.",
+		{ command = "/pgt", desc = "open the search box (also /getthere)" },
+		{ command = "/pgt <zone> <x> <y>", desc = "guide straight to coordinates" },
+		{ command = "/pgt clear", desc = "cancel guidance and remove pins" },
+		{ command = "/pgt config", desc = "open the configuration panel" },
+
+		{ header = "Why it can't teleport you automatically" },
+		"Blizzard protects all casting from addon code - no addon may cast a " ..
+			"spell, use an item, or take a flight on its own. The only bridge " ..
+			"allowed is a secure button that you physically click. That is " ..
+			"exactly what the route panel's teleport steps are: your click casts " ..
+			"the teleport, the addon just put the right button under your cursor.",
+
+		{ header = "If the panel says suggestions update after combat" },
+		"Secure buttons cannot be rewired during combat - another Blizzard " ..
+			"restriction. The panel keeps its last valid buttons until combat " ..
+			"ends, then refreshes.",
+
+		{ header = "Where the travel data comes from" },
+		"Zones, flight points, and dungeon entrances come from the game client " ..
+			"itself, always localized and current. The portal network and " ..
+			"teleport catalog ship in the PeaversGetThereData companion addon, " ..
+			"refreshed automatically from game-data exports.",
+	})
+end
+
 function ConfigUI:GetPages()
 	return {
 		-- First entry renders leftmost and is the default-selected tab
+		{ key = "info", label = "Information", builder = function(f) ConfigUI:BuildInfoPage(f) end },
 		{ key = "general", label = "General", builder = function(f) ConfigUI:BuildGeneralPage(f) end },
 		{ key = "suggestions", label = "Suggestions", builder = function(f) ConfigUI:BuildSuggestionsPage(f) end },
 	}
