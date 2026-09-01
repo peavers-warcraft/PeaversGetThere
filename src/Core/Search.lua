@@ -129,7 +129,7 @@ function Search:Find(query)
 			if allMatch then
 				local id = tonumber(line:sub(1, sep - 1))
 				local entry = id and LocationIndex:GetEntry(id)
-				if entry and not seen[id] then
+				if id and entry and not seen[id] then
 					seen[id] = true
 					local nameLower = text:match("^([^\t]*)")
 					scored[#scored + 1] = {
