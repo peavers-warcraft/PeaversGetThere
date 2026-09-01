@@ -93,7 +93,7 @@ function RoutePanel:BuildSuggestions()
 		return suggestions
 	end
 	local tx, ty, tinstance = HBD:GetWorldCoordinatesFromZone(target.x, target.y, target.map)
-	if not tx then
+	if not tx or not tinstance then
 		return suggestions
 	end
 
