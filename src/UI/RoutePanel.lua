@@ -63,15 +63,8 @@ local function TeleportCooldown(t)
 		end
 		return 0, 0
 	end
-	if C_Item and C_Item.GetItemCooldown then
-		local start, duration = C_Item.GetItemCooldown(t.id)
-		return start or 0, duration or 0
-	end
-	if GetItemCooldown then
-		local start, duration = GetItemCooldown(t.id)
-		return start or 0, duration or 0
-	end
-	return 0, 0
+	local start, duration = C_Item.GetItemCooldown(t.id)
+	return start or 0, duration or 0
 end
 
 local function IsOnCooldown(t)
