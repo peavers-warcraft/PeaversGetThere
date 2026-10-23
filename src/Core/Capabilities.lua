@@ -228,10 +228,8 @@ function Capabilities:GetCooldownRemaining(t)
 			local info = C_Spell.GetSpellCooldown(t.id)
 			start, duration = info and info.startTime or 0, info and info.duration or 0
 		end
-	elseif C_Item.GetItemCooldown then
+	else
 		start, duration = C_Item.GetItemCooldown(t.id)
-	elseif GetItemCooldown then
-		start, duration = GetItemCooldown(t.id)
 	end
 	start, duration = start or 0, duration or 0
 	if duration > GCD_THRESHOLD and (start + duration) > GetTime() then
